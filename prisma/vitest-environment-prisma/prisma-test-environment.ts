@@ -33,6 +33,7 @@ export default <Environment>{
 
         return {
             async teardown() {
+                await prisma.$disconnect();
                 await prisma.$executeRawUnsafe(
                     `DROP SCHEMA IF EXISTS "${schema}" CASCADE`,
                 );
